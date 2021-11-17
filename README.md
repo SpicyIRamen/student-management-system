@@ -9,6 +9,7 @@
 - Read: 
 	- /getall
 	- /{id}
+	- /query?lastname={lastname}
 - Update:
 	- /update/{id}
 - Delete:
