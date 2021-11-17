@@ -1,7 +1,7 @@
 # student-management-system assignment
 
 ### Insomnia
-- localhost:8080/student-management-system/api/v1/student/
+- localhost:8080/student-management-system/api/v1/student
 
 ### CRUD Endpoints
 - Create: 
