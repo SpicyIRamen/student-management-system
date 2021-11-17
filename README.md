@@ -27,4 +27,4 @@ Create & Update
 }
 ```
 
-GetAll, GetById & Delete use no body
+GetAll, GetById, GetStudentByLastName & Delete use no body
