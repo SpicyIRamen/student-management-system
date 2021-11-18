@@ -22,6 +22,18 @@ public class StudentRest {
     public Response createStudent(Student student)
     {
         try {
+            if (student.getName().getBytes().length < 2 || student.getName().isBlank()) {
+                String errorMessage = "{\"Error\": \"Requires 2 characters. \"}";
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorMessage).type(MediaType.APPLICATION_JSON).build();
+            }
+            if (student.getLastName().getBytes().length < 3 || student.getLastName().isBlank()) {
+                String errorMessage = "{\"Error\": \"Requires 3 characters. \"}";
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorMessage).type(MediaType.APPLICATION_JSON).build();
+            }
+            if (student.getEmail().getBytes().length < 6 || student.getEmail().isBlank()){
+                String errorMessage = "{\"Error\": \"Requires a total of 6 characters in the form of an email. \"}";
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorMessage).type(MediaType.APPLICATION_JSON).build();
+            }
             studentService.createStudent(student);
             return Response.ok(student).build();
         } catch (WebApplicationException i){
