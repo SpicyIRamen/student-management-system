@@ -21,19 +21,19 @@ public class StudentRest {
     @POST
     public Response createStudent(Student student)
     {
+        if (student.getName().getBytes().length < 2 || student.getName().isBlank())
+        {
+            throw new TooShortNameException("{\"Error\": \"Name requires at least 2 characters. \"}");
+        }
+        if (student.getLastName().getBytes().length < 3 || student.getLastName().isBlank())
+        {
+            throw new TooShortNameException("{\"Error\": \"Surname requires at least 3 characters. \"}");
+        }
+        if (student.getEmail().getBytes().length < 6 || student.getEmail().isBlank())
+        {
+            throw new TooShortNameException("{\"Error\": \"Requires a total of 6 characters in the form of an email. \"}");
+        }
         try {
-            if (student.getName().getBytes().length < 2 || student.getName().isBlank()) {
-                String errorMessage = "{\"Error\": \"Requires 2 characters. \"}";
-                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorMessage).type(MediaType.APPLICATION_JSON).build();
-            }
-            if (student.getLastName().getBytes().length < 3 || student.getLastName().isBlank()) {
-                String errorMessage = "{\"Error\": \"Requires 3 characters. \"}";
-                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorMessage).type(MediaType.APPLICATION_JSON).build();
-            }
-            if (student.getEmail().getBytes().length < 6 || student.getEmail().isBlank()){
-                String errorMessage = "{\"Error\": \"Requires a total of 6 characters in the form of an email. \"}";
-                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorMessage).type(MediaType.APPLICATION_JSON).build();
-            }
             studentService.createStudent(student);
             return Response.ok(student).build();
         } catch (WebApplicationException i){
