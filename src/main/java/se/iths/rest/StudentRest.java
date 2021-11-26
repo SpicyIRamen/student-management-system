@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("student")
+@Path("students")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class StudentRest {
@@ -17,7 +17,7 @@ public class StudentRest {
     @Inject
     StudentService studentService;
 
-    @Path("new")
+    @Path("")
     @POST
     public Response createStudent(Student student)
     {
@@ -91,9 +91,11 @@ public class StudentRest {
 
     @Path("getall")
     @GET
-    public List<Student> getAllStudent() {
+    public List<Student> getAllStudent()
+    {
         List<Student> foundAllStudents = studentService.getAllStudents();
-        if (foundAllStudents == null || foundAllStudents.isEmpty()) {
+        if (foundAllStudents == null || foundAllStudents.isEmpty())
+        {
             String errorMessage = "{\"Error\": \"No students found.\"}";
             throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
                     .entity(errorMessage).type(MediaType.APPLICATION_JSON).build());
