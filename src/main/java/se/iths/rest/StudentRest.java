@@ -21,7 +21,7 @@ public class StudentRest {
     @POST
     public Response createStudent(Student student)
     {
-        if (student.getName().getBytes().length < 2 || student.getName().isBlank())
+        if (student.getFirstName().getBytes().length < 2 || student.getFirstName().isBlank())
         {
             throw new TooShortNameException("{\"Error\": \"Name requires at least 2 characters. \"}");
         }
@@ -55,7 +55,7 @@ public class StudentRest {
                         .entity(errorMessage).type(MediaType.APPLICATION_JSON).build();
             }
 
-            updatedStudent.setFirstName(student.getName());
+            updatedStudent.setFirstName(student.getFirstName());
             updatedStudent.setLastName(student.getLastName());
             updatedStudent.setEmail(student.getEmail());
             updatedStudent.setPhoneNumber(student.getPhoneNumber());
