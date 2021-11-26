@@ -25,6 +25,13 @@ public class Subject {
     @ManyToOne
     private Teacher teacher;
 
+    public Subject(String subName)
+    {
+        this.subName = subName;
+    }
+
+    public Subject(){}
+
     public List<Student> getStudents() {
         return students;
     }

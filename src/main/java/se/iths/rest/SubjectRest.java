@@ -49,7 +49,7 @@ public class SubjectRest {
     @GET
     public Response getStudentsInSubject(@QueryParam("subName") String subName)
     {
-        String message = "{\"Error\": \"No student found with that lastname.\"}";
+        String message = "{\"Error\": \"There are no Subjects with that name.\"}";
         List<Student> foundStudent = subjectService.getSubjectByName(subName);
         if (foundStudent == null || foundStudent.isEmpty()) {
             throw new WebApplicationException(Response.status(Response.Status.BAD_REQUEST)
