@@ -15,6 +15,17 @@
 - Delete:
 	- /delete/{id}
 
+- Subject
+- localhost:8080/student-management-system/api/v1/subject/
+	- query?subName=Language
+- Subject GetAll
+	- getall
+
+- Teacher
+- localhost:8080/student-management-system/api/v1/teachers/
+- Teachers GetAll
+	- getall
+
 ### JSON-Bodies
 
 Create & Update
